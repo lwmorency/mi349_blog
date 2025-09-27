@@ -1,29 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - My Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – My Blog</title>
+  <meta name="author" content="Luke Morency" />
+  <meta name="description" content="About the author" />
+  <link rel="icon" href="data:," />
+  <style>
+    :root { --bg:#0e1013; --card:#161a20; --text:#e7edf3; --muted:#aab6c4; --accent:#0ea5e9; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#0b0e12,#0f172a 60%,#0b0e12)}
+    header{position:sticky;top:0;backdrop-filter:blur(8px);background:rgba(15,23,42,.6);border-bottom:1px solid #1f2937;z-index:10}
+    nav{max-width:980px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+    nav a.brand{color:var(--text);text-decoration:none;font-weight:700}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:10px}
+    nav a:hover, nav a[aria-current="page"]{background:#0b1220;color:var(--text)}
+    main{max-width:980px;margin:40px auto;padding:0 20px 80px;display:grid;gap:24px}
+    article{background:var(--card);border:1px solid #223044;border-radius:16px;overflow:hidden}
+    .inner{padding:22px;display:grid;gap:16px}
+    h1{margin:0;font-size:clamp(26px,4vw,36px)}
+    p{line-height:1.6}
+    figure{margin:0}
+    figure img{display:block;max-width:100%;height:auto;border-bottom:1px solid #223044}
+    aside{background:#0f1522;border:1px solid #223044;border-radius:12px;padding:14px}
+    footer{max-width:980px;margin:0 auto 40px;padding:0 20px;color:var(--muted)}
+  </style>
 </head>
 <body>
   <header>
-    <nav>
+    <nav aria-label="Primary">
+      <a class="brand" href="index.html">My Blog</a>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h1>About Me</h1>
-    <p>This is the about page. Add info about yourself or your project here.</p>
+    <article itemscope itemtype="https://schema.org/Person">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Portrait of Luke Morency" itemprop="image">
+      </figure>
+      <div class="inner">
+        <header>
+          <h1 itemprop="name">Luke Morency</h1>
+          <p class="muted">
+            <time datetime="2025-09-27" itemprop="birthDate" style="display:none">—</time>
+            <span>Last updated: <time datetime="2025-09-27">September 27, 2025</time></span>
+          </p>
+        </header>
+
+        <p itemprop="description">
+          I’m an Information Science student at MSU who likes building clean, simple web pages and writing about tech, sports, and everyday systems that make life easier. I value practical design, clear typography, and code that’s easy to maintain. When I’m not studying, you’ll find me lifting, gaming, or tinkering with new tools and workflows.
+        </p>
+
+        <p>
+          On this site, I publish short essays and experiments. My goal is to share ideas you can try today—small changes that stack up over time. If something helps, feel free to reach out; I like hearing what people build from the same starting point.
+        </p>
+
+        <aside aria-label="Quick facts">
+          <h2 style="margin-top:0">Quick Facts</h2>
+          <ul>
+            <li>Focus areas: web fundamentals, UX, digital policy, sports analytics</li>
+            <li>Tools I use: HTML/CSS, Git/GitHub, VS Code, basic Python</li>
+            <li>Values: accessibility, readability, and honest metrics</li>
+          </ul>
+        </aside>
+
+        <section aria-label="Links">
+          <h2 style="margin-top:0">Find Me</h2>
+          <ul>
+            <li><a href="mailto:lukemorency@example.com">lukemorency@example.com</a></li>
+            <li><a href="https://lwmorency.github.io/" rel="me">Personal site</a></li>
+          </ul>
+        </section>
+
+        <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <strong>Contact</strong><br>
+          <span itemprop="addressLocality">Southfield</span>, <span itemprop="addressRegion">MI</span>, <span itemprop="addressCountry">USA</span>
+        </address>
+      </div>
+    </article>
   </main>
 
   <footer>
-    <p>&copy; 2025 Your Name</p>
+    <p>© 2025 Luke Morency</p>
   </footer>
 </body>
 </html>

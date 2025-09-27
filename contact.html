@@ -1,40 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - My Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – My Blog</title>
+  <meta name="author" content="Luke Morency" />
+  <meta name="description" content="Contact form for inquiries" />
+  <link rel="icon" href="data:," />
+  <style>
+    :root { --bg:#0e1013; --card:#161a20; --text:#e7edf3; --muted:#aab6c4; --accent:#0ea5e9; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#0b0e12,#0f172a 60%,#0b0e12)}
+    header{position:sticky;top:0;backdrop-filter:blur(8px);background:rgba(15,23,42,.6);border-bottom:1px solid #1f2937;z-index:10}
+    nav{max-width:980px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+    nav a.brand{color:var(--text);text-decoration:none;font-weight:700}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:10px}
+    nav a:hover, nav a[aria-current="page"]{background:#0b1220;color:var(--text)}
+    main{max-width:980px;margin:40px auto;padding:0 20px 80px;display:grid;gap:24px}
+    section.card{background:var(--card);border:1px solid #223044;border-radius:16px;padding:22px}
+    form{display:grid;gap:14px}
+    .row{display:grid;gap:12px}
+    @media (min-width:720px){ .row{grid-template-columns:1fr 1fr} }
+    label{display:block;font-weight:600}
+    input, select, textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #223044;background:#0b1220;color:var(--text)}
+    textarea{min-height:140px;resize:vertical}
+    button{justify-self:start;padding:12px 18px;border-radius:12px;border:1px solid #0b6aa2;background:linear-gradient(180deg,var(--accent),#0284c7);color:#fff;font-weight:700;cursor:pointer}
+    small{color:var(--muted)}
+    footer{max-width:980px;margin:0 auto 40px;padding:0 20px;color:var(--muted)}
+  </style>
 </head>
 <body>
   <header>
-    <nav>
+    <nav aria-label="Primary">
+      <a class="brand" href="index.html">My Blog</a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h1>Contact</h1>
-    <form action="#" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+    <section class="card" aria-labelledby="contact-heading">
+      <header>
+        <h1 id="contact-heading">Contact</h1>
+        <p><small>Use the form below to get in touch. Fields marked with * are required.</small></p>
+      </header>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <form action="#" method="post" novalidate>
+        <div class="row">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email">Email address *</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+        </div>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
+        <div>
+          <label for="reason">Reason for contact *</label>
+          <select id="reason" name="reason" required>
+            <option value="" selected disabled>Choose one</option>
+            <option value="hi">Saying hi</option>
+            <option value="contractor">Looking for a contractor</option>
+            <option value="interview">Interested in an interview</option>
+          </select>
+        </div>
 
-      <button type="submit">Send</button>
-    </form>
+        <div>
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required placeholder="How can I help?"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+
+        <p><small>
+          This form is for demonstration only and does not submit anywhere.
+          Markup uses proper labels, input types, and required fields for accessibility and validity.
+        </small></p>
+      </form>
+
+      <section aria-label="Form metadata" style="margin-top:8px">
+        <p>
+          <strong>Page metadata:</strong>
+          <time datetime="2025-09-27">Published September 27, 2025</time> •
+          <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+            Author: <span itemprop="name">Luke Morency</span>
+          </span>
+        </p>
+      </section>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Your Name</p>
+    <p>© 2025 Luke Morency</p>
   </footer>
 </body>
 </html>
